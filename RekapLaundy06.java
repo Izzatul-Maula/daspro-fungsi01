@@ -29,34 +29,34 @@ static String[] namaHari = {"Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"
         }
     }
 
-    public static int totalPerLayanan(int[][] data, int idxLayanan) {
+    public static int totalPerLayanan(int[][] data, int barisLayanan) {
         int total = 0;
-        for (int j = 0; j < data[idxLayanan].length; j++) {
-            total += data[idxLayanan][j];
+        for (int j = 0; j < data[barisLayanan].length; j++) {
+            total += data[barisLayanan][j];
         }
         return total;
     }
 
     public static void tampilkanLayananTerbanyak(String[] layanan, int[][] data) {
-        int idxMax = 0;
+        int layananMax = 0;
         int maxBerat = totalPerLayanan(data, 0);
 
         for (int i = 1; i < layanan.length; i++) {
             int totalSaatIni = totalPerLayanan(data, i);
             if (totalSaatIni > maxBerat) {
                 maxBerat = totalSaatIni;
-                idxMax = i;
+                layananMax = i;
             }
         }
 
         System.out.println("\n=== LAYANAN DENGAN BERAT CUCIAN TERTINGGI ===");
-        System.out.println("Layanan : " + layanan[idxMax]);
+        System.out.println("Layanan : " + layanan[layananMax]);
         System.out.println("Total   : " + maxBerat + " kg");
     }
 
     public static int hariTersibuk(int[][] data) {
         int jumlahHari = data[0].length;
-        int idxHariMax = 0;
+        int HariMax = 0;
         int maxBeratHari = 0;
 
         for (int j = 0; j < jumlahHari; j++) {
@@ -67,10 +67,10 @@ static String[] namaHari = {"Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"
 
             if (j == 0 || totalHariIni > maxBeratHari) {
                 maxBeratHari = totalHariIni;
-                idxHariMax = j;
+                HariMax = j;
             }
         }
-        return idxHariMax;
+        return HariMax;
     }
 
     public static void hitungPendapatan(String[] layanan, int[] hargaPerKg, int[][] data) {
@@ -81,7 +81,7 @@ static String[] namaHari = {"Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"
             int pendapatanLayanan = berat * hargaPerKg[i];
             totalPendapatan += pendapatanLayanan;
             System.out.printf("%-15s : %3d kg x Rp%-6d = Rp%,d%n",
-                    layanan[i], berat, hargaPerKg[i], pendapatanLayanan);
+            layanan[i], berat, hargaPerKg[i], pendapatanLayanan);
         }
         System.out.println("-----------------------------------------------------------");
         System.out.printf("Total Pendapatan 6 Hari : Rp%,d%n", totalPendapatan);
