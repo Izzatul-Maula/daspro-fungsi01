@@ -13,7 +13,6 @@ public class LacakFungsi06 {
         }
         System.out.println();
     }
-
     public static void main(String[] args) {
         int a = kali2(3);
         int b = tambah(a, kali2(1));
